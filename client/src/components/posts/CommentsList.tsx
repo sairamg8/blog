@@ -1,23 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import type { PostCommentT } from "./types";
+import type { CommentT } from "./types";
 
-export default function CommentsList({ postId }: { postId: string }) {
-  const [comments, setComments] = useState<PostCommentT[]>([]);
-
-  useEffect(() => {
-    const fetchComments = async () => {
-      const { data } = await axios.get(
-        `http://localhost:4001/posts/${postId}/comments`
-      );
-      setComments(data as PostCommentT[]);
-    };
-
-    fetchComments();
-  }, [postId]);
-
-  if (!comments.length) return null;
-
+export default function CommentsList({ comments }: { comments: CommentT[] }) {
   return (
     <>
       <ul className="my-3">

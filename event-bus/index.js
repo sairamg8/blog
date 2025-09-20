@@ -9,6 +9,7 @@ app.post("/events", (req, res) => {
 
   axios.post("http://localhost:4000/events", body); // Posts
   axios.post("http://localhost:4001/events", body); // Comments
+  axios.post("http://localhost:4002/events", body); // Comments
 
   res.send({ status: "OK" });
 });
